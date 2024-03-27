@@ -30,7 +30,7 @@ let handler = async (m, { conn, text, usedPrefix, command, args, participants, i
 
  if (e.length) await conn.reply(res, `🏮 مرحبا يارفاق
 
-@${owbot} هو مطوري
+@${owbot} هو مطوري+967773289295
 لقد تم دعوتي بواسطة *${m.name}*`, m, {
     mentions: d
      }).then(async () => {
