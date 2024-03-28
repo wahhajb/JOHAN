@@ -1,5 +1,4 @@
-if (chat.welcome) {
-              let groupMetadata = await this.groupMetadata(id)  (conn.chats[id]  {}).metadata;
+{let groupMetadata = await this.groupMetadata(id)  (conn.chats[id]  {}).metadata;
               for (let user of participants) {
                 let pp, ppgp;
                 try {
