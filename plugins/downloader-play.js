@@ -15,9 +15,9 @@ let limit_a2 = 400;
 const handler = async (m, { conn, command, args, text, usedPrefix }) => {
   if (!text) throw `*[❗خطأ❗]*
 
-  يرجى كتابة اسم الاغنية التي تريدها
+  يرجى كتابة اسم الشي الذي تبحث عنه
   
-  *مثال:*\n*${usedPrefix + command} رشا رزق - عهد الاصدقاء*`;
+  *مثال:*\n*${usedPrefix + command} خالد الجليل  - سورة الفاتحه *`;
 
   try {
     const yt_play = await search(args.join(' '));
@@ -27,7 +27,7 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
       additionalText = 'فيديو 🎥';
     }
 
-    const texto1 = `*◉——⌈🔊 اغـنـيـة 🔊⌋——◉*\n
+    const texto1 = `*◉——⌈🔊 يوتيوب 🔊⌋——◉*\n
 ❏ 📌 *العنوان:* ${yt_play[0].title}
 
 ❏ 📆 *تاريخ النشر:* ${yt_play[0].ago}
@@ -42,7 +42,7 @@ ${gt}`.trim();
 
     conn.sendMessage(m.chat, { image: { url: yt_play[0].thumbnail }, caption: texto1 }, { quoted: m });
 
-    if (command === 'اغنية') {
+    if (command === '.يوتيوب') {
       try {
         const q = '128kbps';
         const v = yt_play[0].url;
@@ -132,9 +132,9 @@ ${gt}`.trim();
   }
 };
 
-handler.help = ['اغنية', 'play2'].map((v) => v + ' <بحث>');
+handler.help = ['.يوتيوب', 'play2'].map((v) => v + ' <بحث>');
 handler.tags = ['محمل'];
-handler.command = /^(اغنية|play276756655)$/i;
+handler.command = /^(.يوتيوب|play276756655)$/i;
 handler.limit = 3;
 
 export default handler;
