@@ -17,8 +17,8 @@ var handler = async (m, { text, usedPrefix, command }) => {
 };
 
 handler.command = ['بينغ'];
-handler.help = ['Z O R O'];
-handler.tags = ['Z O R O'];
+handler.help = ['نسيانن١'];
+handler.tags = ['نسيانن١'];
 handler.premium = false;
 
 export default handler;
