@@ -2,7 +2,7 @@ let handler = async (m, { conn, command, text }) => {
 let love = `
  ۫ 𝑾𝑬𝑳𝑪𝑶𝑴𝑬
 
-*⌬〘 اوامر المحرز بوت 〙⌬*
+*⌬〘 اوامر البوت 〙⌬*
 
 *✥━─━⌬〘👾〙⌬━─━✥*
 
