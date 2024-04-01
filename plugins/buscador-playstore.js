@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, text, args }) => {
-	if (!args[0]) throw `*[❗] اكتب اسم التطبيق ال انت عاوز تبحث عنه يحب*`
+	if (!args[0]) throw `*[❗] اكتب اسم التطبيق الي انت تريد تبحث عنه يحب*`
 	let enc = encodeURIComponent(text)
 try {
 let json = await fetch(`https://latam-api.vercel.app/api/playstore?apikey=brunosobrino&q=${enc}`)
@@ -25,7 +25,7 @@ conn.sendMessage(m.chat,{image:{url: gPlay.imagen},caption:`🔍 نتيجة ال
 ───────•••───────
 📈 التقيم: ${gPlay.puntuacion}`},{quoted:m})
 } catch (e) {
-await m.reply('اووف السيرفر وقع 🤡 حاول تاني')    
+await m.reply('اووف السيرفر سقط 🤡 حاول ثاني مره')    
 console.log(e)
 }
 }
