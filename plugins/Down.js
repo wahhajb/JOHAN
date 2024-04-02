@@ -46,7 +46,7 @@ let handler = async (m, {
 
         }
         if (feature == "2") {
-            if (!inputs) return m.reply("ضيف اللينك يحب")
+            if (!inputs) return m.reply("ضيف الرابط ")
             await m.reply(wait)
             try {
             let Sv = await SaveFrom(inputs)
