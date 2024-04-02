@@ -21,9 +21,9 @@ var user = number + '@s.whatsapp.net'
 } catch (e) {
 } finally {
 conn.groupParticipantsUpdate(m.chat, [user], 'promote')
-conn.reply(m.chat, `*[ ✅ ] تم رفعه مشرف مبروك الادمن يحب ✨💜*`, m)
+conn.reply(m.chat, `*[ ✅ ] تم رفعه مشرف مبروك الادمن  ✨💜*`, m)
 }}
-handler.help = ['*201278133936xxx*','*@اسم المستخدم*','*محادثة المستجيب*'].map(v => 'promote ' + v)
+handler.help = ['*9677732892xxx*','*@اسم المستخدم*','*محادثة المستجيب*'].map(v => 'promote ' + v)
 handler.tags = ['group']
 handler.command = /^(ترقية|ترقيه|رفع)$/i
 handler.group = true
