@@ -112,7 +112,7 @@ if (!text)
 ❏ ⏯️ *تشغيل:* ${yt_play[0].author.url}
 ❏ 🆔 *الرمز:* ${yt_play[0].videoId}
 ❏ 🪬 *الصيغه:* ${yt_play[0].type}
-❏ 🔗 *الينك:* ${yt_play[0].url}\n
+❏ 🔗 *الرابط:* ${yt_play[0].url}\n
 ❏ *_جـاري التـحمـيل من  ${additionalText}, قـسم اليوتيوب．．．_*`.trim();
     conn.sendMessage(m.chat, {image: {url: yt_play[0].thumbnail}, caption: texto1}, {quoted: m});
     if (command == 'شغل2' || command == 'playdoc') {
