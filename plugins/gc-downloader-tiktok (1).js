@@ -5,13 +5,13 @@ import { generateWAMessageFromContent } from '@adiwajshing/baileys'
 import { tiktokdl, tiktokdlv2, tiktokdlv3 } from '@bochilteam/scraper'
 let handler = async (m, { conn, text, args, usedPrefix, command}) => {
 if (!text) throw `*ارجو ان تعطيني رابط الفيديو المطلوب حتا يتم تنزيله🥱📖؛!!! 
-مثال: :*\n*${usedPrefix + command}* https://vm.tiktok.com/ZMFb4BXVd/`
+مثال: :*\n*${usedPrefix + command}* `
 if (!/(?:https:?\/{2})?(?:w{3}|vm|vt|t)?\.?tiktok.com\/([^\s&]+)/gi.test(text)) throw `*ارجو ان تعطيني رابط الفيديو المطلوب حتا يتم تنزيله🥱📖؛!!! 
 مثال: *\n*${usedPrefix + command}* https://vm.tiktok.com/ZMFb4BXVd/`
-let texto = `*[❗] @${m.sender.split`@`[0]} ارجو منك ان تنتظر بعض دقايق حتا الجد الفيديو المطلوب! 😐📖*`
+let texto = `*[❗] @${m.sender.split`@`[0]} ارجو منك ان تنتظر بعض دقايق حتا اجد الفيديو المطلوب! 😐📖*`
 try {
 let aa = { quoted: m, userJid: conn.user.jid }
-let prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: texto, contextInfo: { externalAdReply: { title: 'قروب دعم البوت لمعرفة اخر تحديثات البوت', body: null, thumbnail: imagen1, sourceUrl: 'https://chat.whatsapp.com/BzJhdxwVlte1unMYgieoYQ' }, mentionedJid: [m.sender]}}}, aa)    
+let prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: texto, contextInfo: { externalAdReply: { title: , body: null, thumbnail: imagen1, sourceUrl: , mentionedJid: [m.sender]}}}, aa)    
 conn.relayMessage(m.chat, prep.message, { messageId: prep.key.id, mentions: [m.sender] })
 let p = await fg.tiktok(args[0]) 
 let buttons = [{ buttonText: { displayText: 'صوت' }, buttonId: `${usedPrefix}tomp3` }]
