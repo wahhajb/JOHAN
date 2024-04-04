@@ -1,5 +1,3 @@
-/* Creditos a FG de Dylux-fg (Bot) */
-
 import fg from 'api-dylux' 
 import { generateWAMessageFromContent } from '@adiwajshing/baileys'
 import { tiktokdl, tiktokdlv2, tiktokdlv3 } from '@bochilteam/scraper'
