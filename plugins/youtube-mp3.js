@@ -18,7 +18,7 @@ let lolh = await lolhuman.json()
 let n = lolh.result.title || 'error'
 await conn.sendFile(m.chat, lolh.result.link, `${n}.mp3`, null, m, false, { mimetype: 'audio/mp4' })    
 } catch {
-await conn.reply(m.chat, '*[❀] 𝙴𝚁𝚁𝙾𝚁*', m)}
+await conn.reply(m.chat, '*[❀] نسيانن١*', m)}
 }}
 handler.command = /^شغل$/i
 export default handler
