@@ -20,13 +20,14 @@ let handler = async (m, {
 
 handler.help = ["dx"]
 handler.tags = ["ai"]
-handler.command = /^(ai)$/i
+handler.command = /^(dx)$/i
 
 export default handler
 
 /* New Line */
 async function getChatGPTResponse(question) {
     try {
+        console.log("Sending request to API...");
         let response = await fetch("https://api.openai.com/v1/completions", {
             method: "POST",
             headers: {
@@ -39,10 +40,13 @@ async function getChatGPTResponse(question) {
                 "max_tokens": 150
             })
         });
+        console.log("Response status:", response.status);
         if (!response.ok) {
             throw new Error("HTTP status " + response.status);
         }
+        console.log("Parsing response...");
         const data = await response.json();
+        console.log("Response data:", data);
         return data.choices[0].text.trim();
     } catch (error) {
         throw new Error("Failed to fetch from API: " + error.message);
