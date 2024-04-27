@@ -13,7 +13,7 @@ let handler = async (m, {
         let result = await getChatGPTResponse(text)
         await conn.sendMessage(m.chat, result, m)
     } catch (e) {
-        console.log(e)
+        console.error(e);
         await m.reply('حدثت مشكلة :(')
     }
 }
@@ -26,18 +26,25 @@ export default handler
 
 /* New Line */
 async function getChatGPTResponse(question) {
-    let response = await fetch("https://api.openai.com/v1/completions", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer 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" // استبدل بالمفتاح السري الخاص بك
-        },
-        body: JSON.stringify({
-            "model": "text-arabic-gpt-3.5",
-            "prompt": question,
-            "max_tokens": 150
-        })
-    });
-    const data = await response.json();
-    return data.choices[0].text.trim();
+    try {
+        let response = await fetch("https://api.openai.com/v1/completions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer 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" // استبدل بالمفتاح السري الخاص بك
+            },
+            body: JSON.stringify({
+                "model": "text-arabic-gpt-3.5",
+                "prompt": question,
+                "max_tokens": 150
+            })
+        });
+        if (!response.ok) {
+            throw new Error("HTTP status " + response.status);
+        }
+        const data = await response.json();
+        return data.choices[0].text.trim();
+    } catch (error) {
+        throw new Error("Failed to fetch from API: " + error.message);
+    }
 }
