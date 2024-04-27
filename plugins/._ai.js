@@ -14,7 +14,7 @@ let handler = async (m, {
         await conn.sendMessage(m.chat, result, m)
     } catch (e) {
         console.error(e);
-        await m.reply('حدثت مشكلة :(')
+        await m.reply('حدثت مشكلة: ' + e.message)
     }
 }
 
