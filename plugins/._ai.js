@@ -1,4 +1,3 @@
-import cheerio from 'cheerio';
 import fetch from 'node-fetch';
 
 let handler = async (m, {
@@ -8,12 +7,13 @@ let handler = async (m, {
     text,
     command
 }) => {
-    if (!text) return m.reply("ميزة الذكاء الاصطناعي \nExample:\n .dx ما هي اول عاصمة في الاسلام ")
+    if (!text) return m.reply("ميزة الذكاء الاصطناعي \nExample:\n .dx ما هي عاصمة المغرب")
     await m.reply("يرجى الانتظار...")
     try {
-        let result = await CleanDx(text)
-        await m.reply(result)
+        let result = await getChatGPTResponse(text)
+        await conn.sendMessage(m.chat, result, m)
     } catch (e) {
+        console.log(e)
         await m.reply('حدثت مشكلة :(')
     }
 }
@@ -25,77 +25,19 @@ handler.command = /^(ai)$/i
 export default handler
 
 /* New Line */
-async function CleanDx(your_qus) {
-    let linkaiList = [];
-    let linkaiId = generateRandomString(21);
-    let Baseurl = "https://vipcleandx.xyz/";
-
-    console.log(formatTime());
-    linkaiList.push({
-        "content": your_qus,
-        "role": "user",
-        "nickname": "",
-        "time": formatTime(),
-        "isMe": true
-    });
-    linkaiList.push({
-        "content": "يتم التفكير...",
-        "role": "assistant",
-        "nickname": "AI",
-        "time": formatTime(),
-        "isMe": false
-    });
-    if (linkaiList.length > 10) {
-        linkaiList = linkaiList.shift();
-    }
-
-    let response = await fetch(Baseurl + "v1/chat/gpt/", {
+async function getChatGPTResponse(question) {
+    let response = await fetch("https://api.openai.com/v1/completions", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "X-Forwarded-For": generateRandomIP(),
-            "Referer": Baseurl,
-            "accept": "application/json, text/plain, */*",
-            "X-Api-Key": "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" // تم استبدال "Your_API_Key" بالمفتاح السري
+            "Authorization": "Bearer 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" // استبدل بالمفتاح السري الخاص بك
         },
         body: JSON.stringify({
-            "list": linkaiList,
-            "id": linkaiId,
-            "title": your_qus,
-            "prompt": "",
-            "temperature": 0.5,
-            "models": "0",
-            "continuous": true
+            "model": "text-arabic-gpt-3.5",
+            "prompt": question,
+            "max_tokens": 150
         })
-    })
-    const data = await response.text();
-
-    return data;
-}
-
-function generateRandomString(length) {
-    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let randomString = '';
-    for (let i = 0; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * characters.length);
-        randomString += characters.charAt(randomIndex);
-    }
-    return randomString;
-}
-
-function generateRandomIP() {
-    const ipParts = [];
-    for (let i = 0; i < 4; i++) {
-        const randomPart = Math.floor(Math.random() * 256);
-        ipParts.push(randomPart);
-    }
-    return ipParts.join('.');
-}
-
-function formatTime() {
-    const currentDate = new Date();
-    const hours = currentDate.getHours().toString().padStart(2, '0');
-    const minutes = currentDate.getMinutes().toString().padStart(2, '0');
-    const seconds = currentDate.getSeconds().toString().padStart(2, '0');
-    return `${hours}:${minutes}:${seconds}`;
+    });
+    const data = await response.json();
+    return data.choices[0].text.trim();
 }
