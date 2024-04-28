@@ -16,6 +16,6 @@ throw eror
 handler.help = ['instagram2']
 handler.tags = ['downloader']
 handler.limit = false
-handler.command = /^(ig2|insta2|instagram2)$/i
+handler.command = /^(ig2|insta2|انستا3)$/i
 
 export default handler
