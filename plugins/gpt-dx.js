@@ -24,7 +24,7 @@ let handler = async (m, {
 
 handler.help = ["cleandx"];
 handler.tags = ["internet"];
-handler.command = /^(dx|bot|بوت|vcv)$/i;
+handler.command = /^(dx|bot|vcv)$/i;
 export default handler;
 
 async function CleanDx(your_qus) {
