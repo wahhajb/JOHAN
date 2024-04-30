@@ -132,8 +132,8 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, isP
 *↫❍┋س1*
 *↫❍┋ستيكر*
 *↫❍┋الانترنت*
-*↫❍┋بريد*
 *↫❍┋فيس*
+*↫❍┋فيس2*
 *↫❍┋ميديا*
 *↫❍┋اغنيه*
 *↫❍┋بحث*
@@ -143,6 +143,10 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, isP
 *↫❍┋سوره*
 *↫❍┋شغل*
 *↫❍┋تويتر*
+*↫❍┋بريد*
+*↫❍┋تحليل*
+*↫❍┋جوجل*
+*↫❍┋*
 >╚════▣◎▣════╝<
 
  🍁*قسم الاسلام*
