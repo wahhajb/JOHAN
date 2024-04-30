@@ -125,6 +125,7 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, isP
 *↫❍┋ءbobizaaii*
 *↫❍┋دمج*
 *↫❍┋تطبيق*
+*↫❍┋2تطبيق*
 *↫❍┋ميديافاير*
 *↫❍┋فيديو*
 *↫❍┋اخبار*
