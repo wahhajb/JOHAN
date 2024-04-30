@@ -935,8 +935,8 @@ export async function handler(chatUpdate) {
         if (!('welcome' in chat)) chat.welcome = true;
         if (!('detect' in chat)) chat.detect = true;
         if (!('detect2' in chat)) chat.detect2 = false;
-        if (!('sWelcome' in chat)) chat.sWelcome = '';
-        if (!('sBye' in chat)) chat.sBye = '';
+        if (!('sWelcome' in chat)) chat.sWelcome = 'true';
+        if (!('sBye' in chat)) chat.sBye = 'true';
         if (!('sPromote' in chat)) chat.sPromote = '';
         if (!('sDemote' in chat)) chat.sDemote = '';
         if (!('delete' in chat)) chat.antidelete = false;
