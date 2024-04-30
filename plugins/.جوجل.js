@@ -1,24 +1,24 @@
-import fetch from  node-fetch ;
-import googleIt from  google-it ;
-
-const handler = async (m, { conn, command, args }) => {
-  const full = /f$/i.test(command);
-  const text = args.join(   );
-  if (!text) throw `البحث في غوغل : \n\n*.google* سورة الفاتحة`;
-  const url =  https://google.com/search?q=  + encodeURIComponent(text);
-  const search = await googleIt({ query: text });
-  const msg = search.map(({ title, link, snippet }) => {
-    return `*${title}*\n_${link}_\n_${snippet}_`;
-  }).join( \n\n );
+import fetch from 'node-fetch'
+import googleIt from 'google-it'
+let handler = async (m, { conn, command, args }) => {
+  let full = /f$/i.test(command)
+  let text = args.join` `
+  if (!text) return conn.reply(m.chat, 'أكتب أي شئ تريد البحث عنه في جوجل \n\n مثال:\n .google moroocco', m)
+  let url = 'https://google.com/search?q=' + encodeURIComponent(text)
+  let search = await googleIt({ query: text })
+  let msg = search.map(({ title, link, snippet}) => {
+    return `*${title}*\n_${link}_\n_${snippet}_`
+  }).join`\n\n`
   try {
-    const logos = `https://skizo.tech/api/ssweb?type=desktop&url=${url}&apikey=seika`;
-    conn.sendFile(m.chat, logos,  logos.jpg , url +  \n\n  + msg, m);
+    var logos = 'https://telegra.ph/file/57c11b5f944d5a393c5d1.jpg'
+	conn.sendFile(m.chat, logos, 'logos.jpg', url + '\n\n' + msg, m)
   } catch (e) {
-    m.reply(msg);
+    m.reply(msg)
   }
-};
+}
+handler.help = ['google', 'googlef'].map(v => v + ' <pencarian>')
+handler.tags = ['search']
+handler.command = /^(google|googlef)$/i
+handler.limit = false
 
-handler.help = [ google ];
-handler.tags = [ search ];
-handler.command = /^google|جوجل?$/i;
-export default handler;
+export default handler
