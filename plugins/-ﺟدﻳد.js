@@ -4,7 +4,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
   try {
     
     if (!text) {
-      return conn.reply(m.chat, `*مرحبا أنا Gemini*\n *كيف يمكنني مساعدتك في أي شئ مثال*\n\n .gemini ماهيا لغة JavaScript`, m);
+      return conn.reply(m.chat, `*مرحبا كيف يمكنني مساعدتك اليوم*`, m);
     }
       
     await m.reply(wait)
@@ -33,7 +33,7 @@ handler.tags = ['ai'];
 handler.limit = false;
 handler.register = false;
 
-handler.command = /^(gemini)$/i;
+handler.command = /^(بوت)$/i;
 
 export default handler;
 
