@@ -28,7 +28,7 @@ let handler = async (m, { conn }) => {
 }
 
 // يحدد الكود كيفية استجابة الروبوت على الرسائل التي تبدأ بكلمة يوهان
-handler.customPrefix = /^مايكى|مايك|مايكي|ايانو/i 
+handler.customPrefix = /^مينينسزسخصسظؤتي/i 
 handler.command = new RegExp
 handler.exp = 50
 export default handler
