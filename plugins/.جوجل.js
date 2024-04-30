@@ -18,7 +18,7 @@ let handler = async (m, { conn, command, args }) => {
 }
 handler.help = ['google', 'googlef'].map(v => v + ' <pencarian>')
 handler.tags = ['search']
-handler.command = /^(google|googlef)$/i
+handler.command = /^(google|جوجل)$/i
 handler.limit = false
 
 export default handler
