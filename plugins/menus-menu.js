@@ -19,7 +19,7 @@ let handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, isPr
     let uptime = clockString(_uptime)
 let who = m.quoted ? m.quoted.sender : m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 if (!(who in global.db.data.users)) throw `✳️ The user is not found in my database`
-let videoUrl = 'https://telegra.ph/file/2e8338d1327f0dc89e36c.mp4';
+let videoUrl = 'https://telegra.ph/file/4b0037642a1ec84b39596.mp4';
   let vn = './media/menu.mp3';
   const user = global.db.data.users[m.sender];
   const {money, joincount} = global.db.data.users[m.sender];
@@ -34,17 +34,22 @@ let rtotalreg = Object.values(global.db.data.users).filter(user => user.register
 let more = String.fromCharCode(8206)
 let readMore = more.repeat(900) 
   const taguser = '@' +  m.sender.split('@s.whatsapp.net')[0];
-let str = `Nezuko-BOT 
+let str = `𝐴𝑌𝐴𝑁𝛩𝐾𝛩𝑈𝐽𝐼-BOT 
 
  *مرحبا,* ${taguser}
 
  _*< إحصائياتك />*_
 
  ♪ *مستوى:* ${level}
+ 
  ▢ *خبرة:* ${exp}
+ 
  ▢ *يتراوح:* ${role}
+ 
  ▢ *الماس:* ${limit}
+ 
  ▢ *نقودك:* ${money}
+ 
  ▢ *الرموز:* ${joincount}
  ▢ *مميز:* ${user.premiumTime > 0 ? '✅' : (isPrems ? '✅' : '❌') || ''}
  ${readMore}
@@ -53,7 +58,7 @@ let str = `Nezuko-BOT
 
 * » 👻│ضيف* 
 * » 💩│طرد*
-* » 🐱‍🏍│ترقية*
+* » 🫡│ترقية*
 * » 👽│اعفاء*
 * » 👾│تحذير*
 * » 👾│حذف_تحذير*
@@ -97,7 +102,7 @@ _🕌 ━━│الدين│━━🕌_
 * ಠ_ಠ 💠│اطفاء*
 * ಠ_ಠ 💠│تفعيل*
 * ಠ_ಠ 💠│المبندين*
-*ಠ_ಠ 💠│إعادة*
+* ಠ_ಠ 💠│إعادة*
 * ಠ_ಠ 💠│اعادةتشغيل*
 * ಠ_ಠ 💠│أدخل*
 * ಠ_ಠ 💠│ضيف_اكس_بي*
