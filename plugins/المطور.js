@@ -42,7 +42,7 @@ let str = `
     
 *｢⧉ الــرقـم ↚『https://wa.me/201112422078』*
 
-*｢⧉ جروب الدعم ↚『https://chat.whatsapp.com/BM6tmSIPz5zJZJRJHvIHv0』*
+*｢⧉ جروب الدعم ↚『 https://chat.whatsapp.com/BM6tmSIPz5zJZJRJHvIHv0 』*
 *∞┇━━━ •𓆩🌐𓆪• ━━━┇∞*
 *~تــ✍︎ــوقــيــع ↯:~*
 *「 𝑀𝐼𝐾𝐸𝑌 ╎ 𝐴𝑌𝐴𝑁𝛩𝐾𝛩𝑈𝐽𝐼 」*
