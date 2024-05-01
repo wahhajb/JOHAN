@@ -1,9 +1,3 @@
-let handler = async (m, { conn, usedPrefix, command }) => {
-  await conn.sendMessage(m.chat, {
-   react: {
- text: "🤖",
- key: m.key,
-   }
 import { createHash } from 'crypto'
 import { canLevelUp, xpRange } from '../lib/levelling.js'
 import fetch from 'node-fetch'
@@ -42,7 +36,7 @@ let readMore = more.repeat(900)
   const taguser = '@' +  m.sender.split('@s.whatsapp.net')[0];
 let str = `𝐴𝑌𝐴𝑁𝛩𝐾𝛩𝑈𝐽𝐼-BOT 
 
- *مرحبا,* ${taguser}
+ *مرحبا,* ${taguser}                            ‌
 
  _*< إحصائياتك />*_
 
@@ -139,7 +133,7 @@ _🕌 ━━│الدين│━━🕌_
 * 🎡 ™│احزر*
 * 🎡 ™│زواج*
 * 🎡 ™│انطق*
-* 🎡 ™│تاج*
+* 🎡 ™│تاج*                            ‌
 * 🎡 ™│حكمه*
 * 🎡 ™│ميمز*
 * 🎡 ™│سوال*
@@ -171,7 +165,7 @@ _🕌 ━━│الدين│━━🕌_
 * 🎼 ⨠│روبوت*
 * 🎼 ⨠│بطيء*
 * 🎼 ⨠│ناعم*
-* 🎼 ⨠│سنجاب*
+* 🎼 ⨠│سنجاب*                               ‌
 
 `.trim();
 
