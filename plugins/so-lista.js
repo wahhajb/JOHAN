@@ -169,26 +169,6 @@ if (chat.audios && m.text.match(/(مشفر)/gi)) {
 let vn = './media/Moshafer.mp3'
 this.sendPresenceUpdate('recording', m.chat)   
 this.sendFile(m.chat, vn, 'error.mp3', null, m, true, {type: 'audioMessage', ptt: true})}
-
-if (chat.audios && m.text.match(/(القنصل)/gi)) {    
-let vn = './media/2اخويا القنصل.mp3'
-this.sendPresenceUpdate('recording', m.chat)   
-this.sendFile(m.chat, vn, 'error.mp3', null, m, true, {type: 'audioMessage', ptt: true})}
-
-if (chat.audios && m.text.match(/(ايديت)/gi)) {    
-let vn = './media/menus/Menuvid1.mp4'
-this.sendPresenceUpdate('recording', m.chat)   
-this.sendFile(m.chat, vn, 'error.mp3', null, m, true, {type: 'audioMessage', ptt: true})}
-
-if (chat.audios && m.text.match(/(Shadow)/gi)) {    
-let vn = './media/menus/Menuvid2.mp4'
-this.sendPresenceUpdate('recording', m.chat)   
-this.sendFile(m.chat, vn, 'error.mp3', null, m, true, {type: 'audioMessage', ptt: true})}
-
-if (chat.audios && m.text.match(/(عمك-شادو)/gi)) {    
-let vn = './media/menus/Menuvid3.mp4'
-this.sendPresenceUpdate('recording', m.chat)   
-this.sendFile(m.chat, vn, 'error.mp3', null, m, true, {type: 'audioMessage', ptt: true})}
   
 if (chat.audios && m.text.match(/(بوت متناك)/gi)) {    
 let vn = './media/بوت متناك.mp3'
