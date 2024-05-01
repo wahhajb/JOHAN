@@ -146,7 +146,7 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, isP
 *↫❍┋بريد*
 *↫❍┋تحليل*
 *↫❍┋جوجل*
-*↫❍┋*
+*↫❍┋استمع*
 >╚════▣◎▣════╝<
 
  🍁*قسم الاسلام*
