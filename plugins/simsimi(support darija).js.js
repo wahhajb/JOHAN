@@ -20,7 +20,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 }
 handler.help = ['igstory <username>']
 handler.tags = ['downloader']
-handler.command = ['ستوري-انستا', 'ighistoria', 'ighistorias' ]
+handler.command = ['igstory', 'ighistoria', 'ighistorias' ]
 handler.limit = 3
 handler.exp = 87
 export default handler
