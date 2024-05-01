@@ -1,7 +1,7 @@
 let handler = async (m, { conn, usedPrefix, command }) => {
   await conn.sendMessage(m.chat, {
    react: {
- text: "⚽",
+ text: "🫡",
  key: m.key,
    }
   })
