@@ -77,9 +77,9 @@ let handler = m => m;
        '*ايانوكوجي كيوتاكا في خدمتك🫡🖤*',  
 
      ];
-     }else if (/^كسمك|عرص|معرص|شرموط|$/i.test(m.text)) { 
+     }else if (/^ااهلا/i.test(m.text)) { 
      responses = [ 
-       '*https://telegra.ph/file/a84a73b269865fc8fa3ed.mp4*',  
+       '*🫡*',  
 
      ]; 
      }else if (/^مساء|مساء$/i.test(m.text)) { 
