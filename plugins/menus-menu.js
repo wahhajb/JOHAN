@@ -1,3 +1,9 @@
+let handler = async (m, { conn, usedPrefix, command }) => {
+  await conn.sendMessage(m.chat, {
+   react: {
+ text: "🤖",
+ key: m.key,
+   }
 import { createHash } from 'crypto'
 import { canLevelUp, xpRange } from '../lib/levelling.js'
 import fetch from 'node-fetch'
