@@ -25,7 +25,7 @@ import gtts from 'node-gtts'
  }} 
  handler.help = ['tts <لغة> <نص>'] 
  handler.tags = ['tools'] 
- handler.command = /^g?tts|انطق$/i 
+ handler.command = /^tts|انطق$/i 
  export default handler 
   
  function tts(text, lang = 'es') { 
