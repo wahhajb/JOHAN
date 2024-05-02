@@ -42,4 +42,4 @@ function tts(text, lang = 'en-en') {
       })
     } catch (e) { reject(e) }
   })
-      }
+  }
