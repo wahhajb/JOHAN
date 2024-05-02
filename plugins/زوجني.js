@@ -5,7 +5,7 @@ if (!res.ok) throw await res.text()
 let json = await res.json()
 if (!json.url) throw `${lenguajeGB['smsAvisoFG']()}`
 conn.sendFile(m.chat, json.url, 'error.jpg', `  *زوجتك قمر زيك 😂✨*  `, m)
-//conn.sendButton(m.chat, `😻😻😻😻`, wm, json.url, [['𝙎𝙄𝙂𝙐𝙄𝙀𝙉𝙏𝙀 | 𝙉𝙀𝙓𝙏 🆕', `/${command}`]], m)
+conn.sendButton(m.chat, `😻😻😻😻`, wm, json.url, [['𝙎𝙄𝙂𝙐𝙄𝙀𝙉𝙏𝙀 | 𝙉𝙀𝙓𝙏 🆕', `/${command}`]], m)
 }
 handler.help = ['waifu']
 handler.tags = ['anime']
