@@ -17,7 +17,7 @@ let handler = m => m
 
  } 
 
- if (/^بتعمل ايه دلوقتي$/i.test(m.text) ) { //sem prefixo 
+ if (/^بتعمل ايه$/i.test(m.text) ) { //sem prefixo 
  conn.reply(m.chat, ` بكلمك, `, m) //wm, null, [['Menu', '#menu']], m) botones :V 
 
  } 
@@ -57,7 +57,7 @@ let handler = m => m
  } 
 
  if (/^اه$/i.test(m.text) ) { //sem prefixo 
- conn.reply(m.chat, ` انا برئ معملتش حاجه🙂 `, m) //wm, null, [['Menu', '#menu']], m) botones :V 
+ conn.reply(m.chat, ` الشارع الي وراه دانا هعملك محضر ابن فاجره دلوقتي😂🖤`, m) //wm, null, [['Menu', '#menu']], m) botones :V 
 
  } 
 
