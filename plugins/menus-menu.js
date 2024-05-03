@@ -178,6 +178,8 @@ let str = `𝐴𝑌𝐴𝑁𝛩𝐾𝛩𝑈𝐽𝐼-BOT
 
 `.trim();
 
+ await conn.sendMessage(m.chat, { react: { text: '🤖', key: m.key } })
+   
 conn.sendMessage(m.chat, {
         video: { url: videoUrl }, caption: str,
   mentions: [m.sender,global.conn.user.jid],
