@@ -4,7 +4,7 @@ let res = await fetch('https://api.waifu.pics/sfw/waifu')
 if (!res.ok) throw await res.text()
 let json = await res.json()
 if (!json.url) throw `${lenguajeGB['smsAvisoFG']()}`
-conn.sendFile(m.chat, json.url, 'error.jpg', `  *زوجتك قمر زيك 😂✨*  `, m)
+conn.sendFile(m.chat, json.url, 'error.jpg', `  *مراتك بطل يسطا🫣*  `, m)
 conn.sendButton(m.chat, `😻😻😻😻`, wm, json.url, [['𝙎𝙄𝙂𝙐𝙄𝙀𝙉𝙏𝙀 | 𝙉𝙀𝙓𝙏 🆕', `/${command}`]], m)
 }
 handler.help = ['waifu']
