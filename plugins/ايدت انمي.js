@@ -123,9 +123,6 @@ const dir = [
 'https://telegra.ph/file/217aa7bcf5247e1f655aa.mp4', 
 'https://telegra.ph/file/70517c1f73c5ecdc61a63.mp4', 
 ];
-
-await conn.sendMessage(m.chat, { react: { text: '🫡', key: m.key } })
-
 let handler = async (m, { conn }) => {
   conn.sendFile(m.chat, dir[Math.floor(Math.random() * dir.length)], 'dado.webp', '', m)
 }
