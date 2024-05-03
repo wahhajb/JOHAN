@@ -13,7 +13,7 @@ const dir = [
 'https://telegra.ph/file/539d50387958f5d58e76c.mp4',
 'https://telegra.ph/file/aa6c00ce3e0e07d6775dd.mp4',
 'https://telegra.ph/file/6a8818cad48e79495390a.mp4',
-'https://telegra.ph/fil e/141b6f6cda402a8de3c3e.mp4',
+'https://telegra.ph/file/141b6f6cda402a8de3c3e.mp4',
 'https://telegra.ph/file/1180e55bd2cf29924c8d2.mp4',
 'https://telegra.ph/file/38bde47b6402f2bfb06aa.mp4', 
 'https://telegra.ph/file/32344686758198df923a1.mp4',
