@@ -1,14 +1,25 @@
-import { generateWAMessageFromContent } from '@adiwajshing/baileys'
-let handler = async (m, { conn, text, participants, isOwner, isAdmin }) => {
-let users = participants.map(u => conn.decodeJid(u.id))
-let q = m.quoted ? m.quoted : m || m.text || m.sender
-let c = m.quoted ? await m.getQuotedObj() : m.msg || m.text || m.sender
-let msg = conn.cMod(m.chat, generateWAMessageFromContent(m.chat, { [m.quoted ? q.mtype : 'extendedTextMessage']: m.quoted ? c.message[q.mtype] : { text: '' || c }}, { quoted: m, userJid: conn.user.id }), text || q.text, conn.user.jid, { mentions: users })
-await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
+import similarity from 'similarity'
+const threshold = 0.72
+let handler = m => m
+handler.before = async function (m) {
+    let id = m.chat
+    if (!m.quoted || !m.quoted.fromMe || !m.quoted.isBaileys || !/^ⷮ/i.test(m.quoted.text)) return !0
+    this.tekateki = this.tekateki ? this.tekateki : {}
+    if (!(id in this.tekateki)) return m.reply('Ese acertijo ya ha terminado!')
+    if (m.quoted.id == this.tekateki[id][0].id) {
+        let json = JSON.parse(JSON.stringify(this.tekateki[id][1]))
+        // m.reply(JSON.stringify(json, null, '\t'))
+        if (m.text.toLowerCase() == json.response.toLowerCase().trim()) {
+            global.db.data.users[m.sender].exp += this.tekateki[id][2]
+            m.reply(`*اجـابـة صـحـيـحـة✅ ❯*\n\n*الـجـائـزة💰↞ ${this.tekateki[id][2]} نقطة*`)
+            clearTimeout(this.tekateki[id][3])
+            delete this.tekateki[id]
+        } else if (similarity(m.text.toLowerCase(), json.response.toLowerCase().trim()) >= threshold) m.reply(`اقتربت من الاجابه!`)
+        else m.reply('اجـابـة خـاطـئـة❌ ❯')
+    }
+    return !0
 }
-handler.help = ['hidetag']
-handler.tags = ['group']
-handler.command = /^(مهم|مهم)$/i
-handler.group = true
-handler.owner = true
+
+handler.exp = 0
+
 export default handler
