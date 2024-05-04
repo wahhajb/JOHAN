@@ -1,4 +1,4 @@
-import fs from 'fs';
+//import fs from 'fs';
 
 let timeout = 60000;
 let poin = 500;
