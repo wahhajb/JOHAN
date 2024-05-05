@@ -228,5 +228,5 @@ conn.sendButton(m.chat, `🗂️ خيار: ${type}
 📣 ل: ${isAll ? 'البوت ده' : isUser ? '' : 'الشات ده'}`, author, null, [[`${isEnable ? '✖️ تعطيل ✖️' : '✔️ تنشيط ✔️'}`, `${isEnable ? `#disable ${type}` : `#enable ${type}`}`]], m)}
 handler.help = ['en', 'dis'].map(v => v + 'able <option>')
 handler.tags = ['group', 'owner']
-handler.command = /^((en|dis)able|(تفعيل)|(turn)?[01])$/i
+handler.command = /^(01)$/i
 export default handler
