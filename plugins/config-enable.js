@@ -35,7 +35,7 @@ footer: `┏━━━━━━━━━━━━━┓
 
 
 
-𝑩𝒚 : 𝑨𝒃𝒅𝒆𝒍𝒓𝒂𝒉𝒎𝒂𝒏 𝑬𝒍𝒔𝒉𝒂𝒎𝒉𝒐𝒖𝒕
+𝑩𝒚 : 𝐴𝑌𝐴𝑁𝛩𝐾𝛩𝑈𝐽𝐼-𝐵𝛩𝑇
 ┗━━━━━━━━━━━━━┛`,
 title: null,
 buttonText: "◥ ツاختر من هناツ ◤",
@@ -228,5 +228,5 @@ conn.sendButton(m.chat, `🗂️ خيار: ${type}
 📣 ل: ${isAll ? 'البوت ده' : isUser ? '' : 'الشات ده'}`, author, null, [[`${isEnable ? '✖️ تعطيل ✖️' : '✔️ تنشيط ✔️'}`, `${isEnable ? `#disable ${type}` : `#enable ${type}`}`]], m)}
 handler.help = ['en', 'dis'].map(v => v + 'able <option>')
 handler.tags = ['group', 'owner']
-handler.command = /^((en|dis)able|(تفعي)ل|(turn)?[01])$/i
+handler.command = /^((en|dis)able|(تفعيل)|(turn)?[01])$/i
 export default handler
