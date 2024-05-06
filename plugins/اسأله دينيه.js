@@ -10,7 +10,7 @@ let handler = async (m, { conn, usedPrefix }) => {
         conn.reply(m.chat, '❐┃لم يتم الاجابة علي السؤال بعد┃❌ ❯', conn.tekateki[id][0]);
         throw false;
     }
-    let tekateki = JSON.parse(fs.readFileSync(`https://raw.githubusercontent.com/mikey44d/MIKEYFOR-/master/src/JSON/%D8%AF%D9%8A%D9%86%20%20.json`));
+    let tekateki = JSON.parse(fs.readFileSync(`https://raw.githubusercontent.com/mikey44d/MIKEYFOR-/master/src/game/%D8%AF%D9%8A%D9%86%20%20.json`));
     let json = tekateki[Math.floor(Math.random() * tekateki.length)];
     let _clue = json.response;
     let clue = _clue.replace(/[A-Za-z]/g, ''); // Fixed this line
