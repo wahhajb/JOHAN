@@ -27,5 +27,5 @@ const handler = async (m, {conn, usedPrefix}) => {
 };
 handler.help = ['acertijo'];
 handler.tags = ['game'];
-handler.command = /^(سوال-انمي|acert|pregunta|adivinanza|tekateki)$/i;
+handler.command = /^(سؤال|acert|pregunta|adivinanza|tekateki)$/i;
 export default handler;
