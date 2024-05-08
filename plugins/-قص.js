@@ -1,19 +1,37 @@
 
-import fetch from 'node-fetch'
-let handler = async(m, { conn, args, text }) => {
-if (!text) throw '* فين الرابط ؟*\n*ضيف رابط يحب*'
-let shortUrl1 = await (await fetch(`https://tinyurl.com/api-create.php?url=${args[0]}`)).text()  
-if (!shortUrl1) throw `*[❗] خطأ اتاكد انك حطيت رابط *`
-let done = `*✅ تم تنفيذ المهمة بنجاح!!*\n\n*الرابط قبل التقصير:*\n${text}\n*الرابط بعد التقصير:*\n${shortUrl1}`.trim()   
-m.reply(done)}
-handler.help = ['tinyurl','acortar'].map(v => v + ' <link>')
-handler.tags = ['tools']
-handler.command = /^(tinyurl|short|تصغير|قص|تقصير)$/i
-handler.limit = 1
-handler.register = fail
-handler.fail = null
-export default handler
 
+import fetch from  node-fetch ; 
 
+let handler = async function (m, { text }) {
+  try {
+    if (!text) {
+      m.reply(`لو تبغاه بدون تخصيص سوي : 
+. اختصار وحط رابط
+مثال : 
+.اختصار https://bk9.site/ 
+لو تبغاه بتخصيص سوي : 
+.اختصار حط رابط + كلمة
+مثال : 
+.اختصار https://bk9.site/ + قروب_الملصقات`);
+      return;
+    }
+    const [link, alias] = text.split("+").map(part => part.trim());
+    let apiUrl = `https://bk9.site/api/create?url=${encodeURIComponent(link)}`;
+    if (alias) apiUrl += `&alias=${encodeURIComponent(alias)}`;
+    const response = await fetch(apiUrl);
+    const data = await response.json();
 
+    if (data.BK99) {
+      return m.reply("هذا التخصيص مأخوذ، جرب اخر.");
+    }
+    const shortURL = data.BK9;
+    return m.reply(`֎╎تـم  اخـتـصـار  رابـطـك ${alias ?   مع التخصيص ب "  + alias +  "  :   }:\n\n${shortURL}`);
+  } catch (error) {
+    console.error(error);
+    return m.reply( خطأ );
+  }
+};
 
+handler.command = [ اختصار ];
+handler.tags = [ اختصار ];
+export default handler;
