@@ -33,7 +33,7 @@ handler.tags = ['ai'];
 handler.limit = false;
 handler.register = false;
 
-handler.command = /^(بوت)$/i;
+handler.command = /^(2بوت)$/i;
 
 export default handler;
 
