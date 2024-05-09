@@ -88,7 +88,7 @@ let handler = m => m;
  ' الشكر لله 🖤',  
  'العفو يبشه 🖤' 
 ]; 
- }else if (/^اكامي $/i.test(m.text)) { 
+ }else if (/^اكامي$/i.test(m.text)) { 
  responses = [ 
  'زوجتي الي بيقرب لها بفشخه',  
  'حته من قلبي🫣🖤',  
