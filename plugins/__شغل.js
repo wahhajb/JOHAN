@@ -29,12 +29,13 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
   ❒ الـرابــط: ${url}`;
 
   conn.sendMessage(m.chat, { image: { url: thumbnail }, caption: captvid, footer: author }, { quoted: m });
-await conn.sendMessage(m.chat, {
-      react: {
-        text: "⏳",
-        key: m.key,
-      },
-    });
+
+  await conn.sendMessage(m.chat, {
+    react: {
+      text: "🎵",
+      key: m.key,
+    },
+  });
 
   const audioStream = ytdl(url, {
     filter: 'audioonly',
@@ -89,3 +90,6 @@ handler.exp = 0;
 handler.diamond = false;
 
 export default handler;
+
+
+بهذه الطريقة، عندما ترسل `.شغل`، سيتم إرسال رمز "🎵" كتفاعل، وعندما يتم إرسال المقطع الصوتي سيتم تبديل "🎵" بـ "✅". يرجى تجربة الكود وإخباري إذا كنت بحاجة إلى أي مساعدة إضافية.
