@@ -1,10 +1,10 @@
 
-import ytdl from  ytdl-core ;
-import yts from  yt-search ;
-import fs from  fs ;
-import { pipeline } from  stream ;
-import { promisify } from  util ;
-import os from  os ;
+import ytdl from 'ytdl-core';
+import yts from 'yt-search';
+import fs from 'fs';
+import { pipeline } from 'stream';
+import { promisify } from 'util';
+import os from 'os';
 
 const streamPipeline = promisify(pipeline);
 
@@ -13,9 +13,9 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
 
   let search = await yts(text);
   let vid = search.videos[Math.floor(Math.random() * search.videos.length)];
-  if (!search) throw  Video Not Found, Try Another Title ;
+  if (!search) throw 'Video Not Found, Try Another Title';
   let { title, thumbnail, timestamp, views, ago, url } = vid;
-  let wm =  Downloading audio please wait ;
+  let wm = 'Downloading audio please wait';
 
   let captvid = `*❖───┊ ♪ يــوتـــيــوب ♪ ┊───❖*
   ❏ الـعـنوان: ${title}
@@ -32,11 +32,11 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
 
 
   const audioStream = ytdl(url, {
-    filter:  audioonly ,
-    quality:  highestaudio ,
+    filter: 'audioonly',
+    quality: 'highestaudio',
   });
 
-  // Get the path to the system s temporary directory
+  // Get the path to the system's temporary directory
   const tmpDir = os.tmpdir();
 
   // Create writable stream in the temporary directory
@@ -49,7 +49,7 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
     audio: {
       url: `${tmpDir}/${title}.mp3`
     },
-    mimetype:  audio/mp4 ,
+    mimetype: 'audio/mp4',
     fileName: `${title}`,
     contextInfo: {
       externalAdReply: {
@@ -76,8 +76,8 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
   });
 };
 
-handler.help = [ play ].map((v) => v +   <query> );
-handler.tags = [ downloader ];
+handler.help = ['play'].map((v) => v + ' <query>');
+handler.tags = ['downloader'];
 handler.command = /^شغل$/i;
 
 handler.exp = 0;
