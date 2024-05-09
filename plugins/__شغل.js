@@ -1,4 +1,3 @@
-
 import ytdl from 'ytdl-core';
 import yts from 'yt-search';
 import fs from 'fs';
@@ -74,6 +73,12 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
       console.log(`Deleted audio file: ${tmpDir}/${title}.mp3`);
     }
   });
+
+  // Send music emoji as a reaction to the command
+  await conn.reaction(m.chat, '🎵');
+
+  // Send check mark emoji to indicate success
+  await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
 };
 
 handler.help = ['play'].map((v) => v + ' <query>');
