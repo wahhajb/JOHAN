@@ -26,7 +26,7 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
   ❒ مـنذ: ${ago}
 
   ❒ الـرابــط: ${url}`;
-await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
+
   conn.sendMessage(m.chat, { image: { url: thumbnail }, caption: captvid, footer: author }, { quoted: m });
   const audioStream = ytdl(url, {
     filter:  audioonly ,
