@@ -1,10 +1,10 @@
 
-import ytdl from 'ytdl-core';
-import yts from 'yt-search';
-import fs from 'fs';
-import { pipeline } from 'stream';
-import { promisify } from 'util';
-import os from 'os';
+import ytdl from  ytdl-core ;
+import yts from  yt-search ;
+import fs from  fs ;
+import { pipeline } from  stream ;
+import { promisify } from  util ;
+import os from  os ;
 
 const streamPipeline = promisify(pipeline);
 
@@ -13,9 +13,9 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
 
   let search = await yts(text);
   let vid = search.videos[Math.floor(Math.random() * search.videos.length)];
-  if (!search) throw 'Video Not Found, Try Another Title';
+  if (!search) throw  Video Not Found, Try Another Title ;
   let { title, thumbnail, timestamp, views, ago, url } = vid;
-  let wm = 'Downloading audio please wait';
+  let wm =  Downloading audio please wait ;
 
   let captvid = `*❖───┊ ♪ يــوتـــيــوب ♪ ┊───❖*
   ❏ الـعـنوان: ${title}
@@ -29,20 +29,19 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
   ❒ الـرابــط: ${url}`;
 
   conn.sendMessage(m.chat, { image: { url: thumbnail }, caption: captvid, footer: author }, { quoted: m });
-
-  await conn.sendMessage(m.chat, {
-    react: {
-      text: "🎵",
-      key: m.key,
-    },
-  });
+await conn.sendMessage(m.chat, {
+      react: {
+        text: "⏳",
+        key: m.key,
+      },
+    });
 
   const audioStream = ytdl(url, {
-    filter: 'audioonly',
-    quality: 'highestaudio',
+    filter:  audioonly ,
+    quality:  highestaudio ,
   });
 
-  // Get the path to the system's temporary directory
+  // Get the path to the system s temporary directory
   const tmpDir = os.tmpdir();
 
   // Create writable stream in the temporary directory
@@ -55,7 +54,7 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
     audio: {
       url: `${tmpDir}/${title}.mp3`
     },
-    mimetype: 'audio/mp4',
+    mimetype:  audio/mp4 ,
     fileName: `${title}`,
     contextInfo: {
       externalAdReply: {
@@ -82,14 +81,11 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
   });
 };
 
-handler.help = ['play'].map((v) => v + ' <query>');
-handler.tags = ['downloader'];
+handler.help = [ play ].map((v) => v +   <query> );
+handler.tags = [ downloader ];
 handler.command = /^شغل$/i;
 
 handler.exp = 0;
 handler.diamond = false;
 
 export default handler;
-
-
-بهذه الطريقة، عندما ترسل `.شغل`، سيتم إرسال رمز "🎵" كتفاعل، وعندما يتم إرسال المقطع الصوتي سيتم تبديل "🎵" بـ "✅". يرجى تجربة الكود وإخباري إذا كنت بحاجة إلى أي مساعدة إضافية.
