@@ -13,7 +13,7 @@ let user = global.db.data.users[m.sender]
 ┇ *🧮 الفل :* *${user.level}*
 ┇ *⚡ مصنف :* ${role}
 ┇ *🏹 نقاط الخبرة :* *${user.exp - min}/${xp}*
-┛━━━⊰ Nezuko ⊱━━━┗
+┛━━━⊰ 𝐴𝑌𝐴𝑁𝛩𝐾𝛩𝑈𝐽𝐼 ⊱━━━┗
 
 *تحتاج ${max - user.exp} من نقاط الخبرة للوصول الي مستوي جديد*`
 conn.sendFile(m.chat, pp, 'levelup.jpg', lvl, m)
@@ -27,7 +27,7 @@ conn.sendFile(m.chat, pp, 'levelup.jpg', lvl, m)
 ┇🎗 *المستوي السابق :* *${before}*
 ┇🎁 *المستوي الحالي :* *${user.level}*
 ┇🏹 *التصنيف :* ${role} 
-┛━━━⊰ Nezuko ⊱━━━┗`.trim()
+┛━━━⊰ 𝐴𝑌𝐴𝑁𝛩𝐾𝛩𝑈𝐽𝐼 ⊱━━━┗`.trim()
         try {
             const img = await levelup(teks, user.level)
             conn.sendFile(m.chat, pp, 'levelup.jpg', str, m)
