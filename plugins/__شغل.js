@@ -29,7 +29,12 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
   ❒ الـرابــط: ${url}`;
 
   conn.sendMessage(m.chat, { image: { url: thumbnail }, caption: captvid, footer: author }, { quoted: m });
-
+await conn.sendMessage(m.chat, {
+      react: {
+        text: "⏳",
+        key: m.key,
+      },
+    });
 
   const audioStream = ytdl(url, {
     filter: 'audioonly',
