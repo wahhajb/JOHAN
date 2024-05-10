@@ -44,6 +44,10 @@ let str = `
 
 *｢⧉ الــرقـم الثاني ↚『https://wa.me/84839565972』*
 
+*｢⧉ الــلــــقب ↚ 『𝑺𝐻𝐼𝑁𝑅𝐴』*
+
+*｢⧉ الــرقـم ↚『https://wa.me/96895131757』*
+
 *｢⧉ جروب الدعم ↚『 https://chat.whatsapp.com/BM6tmSIPz5zJZJRJHvIHv0 』*
 
 *｢⧉ روابط التواصل الخاصه بالمطور ↚『 https://atom.bio/mikeyfor_1 』*
