@@ -58,7 +58,7 @@ let str = `
 *｢⧉ ملاحظه عليك كتابه نقطه قبل كل امر مثل ↚〖.زواج〗*
 ‬`.trim();
     
-await conn.sendMessage(m.chat, { react: { text: '🫡', key: m.key } })
+await conn.sendMessage(m.chat, { react: { text: '🪽', key: m.key } })
 
 conn.sendMessage(m.chat, {
         video: { url: videoUrl }, caption: str,
