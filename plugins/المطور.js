@@ -42,6 +42,8 @@ let str = `
     
 *｢⧉ الــرقـم ↚『https://wa.me/201112422078』*
 
+*｢⧉ الــرقـم الثاني ↚『https://wa.me/84839565972』*
+
 *｢⧉ جروب الدعم ↚『 https://chat.whatsapp.com/BM6tmSIPz5zJZJRJHvIHv0 』*
 
 *｢⧉ روابط التواصل الخاصه بالمطور ↚『 https://atom.bio/mikeyfor_1 』*
