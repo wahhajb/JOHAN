@@ -13,7 +13,7 @@ let handler = async (m, { conn, command, usedPrefix }) => {
   ❐↞┇الـوقـت⏳↞ *${(timeout / 1000).toFixed(2)} ┇
   *استخدم .انسحب للأنسحاب*
   ❐↞┇الـجـائـزة💰↞ ${poin} نقاط┇
-*❰BY : 𝐴𝑌𝐴𝑁𝛩𝐾𝛩𝑈𝐽𝐼❱*
+*❰BY : 𝑺𝐻𝐴𝐷𝛩𝑊 𝐵𝛩𝑇❱*
      `.trim()
     conn.tebakbendera[id] = [
         await conn.sendFile(m.chat, json.question, '', caption, m),
