@@ -6,7 +6,7 @@ if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted.sender
 else who = m.chat
 let users = global.db.data.users
 users[who].banned = true
-m.reply('*[❗] تم حظر المستخدم بنجاح*\n*—◉ لن يتمكن المستخدم من استخدام البوت حتي يتم الغاء الحظر*')    }
+m.reply('*[❗] تم حظر المستخدم *\n*—◉ لن يتمكن المستخدم من استخدام البوت حتي يتم الغاء الحظر*')    }
 handler.command = /^بان$/i
 handler.rowner = true
 export default handler
