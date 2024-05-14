@@ -3,7 +3,7 @@ let handler = m => m
  let chat = global.db.data.chats[m.chat] 
 
  if (/^احا$/i.test(m.text) ) { //sem prefixo 
- conn.reply(m.chat, `احتين بيكوز احا واحده لاتكفي 🐦🥹`, m) //wm, null, [['Menu', '#menu']], m) botones :V 
+ conn.reply(m.chat, `احتين بيكوز احا واحده لاتكفي `, m) //wm, null, [['Menu', '#menu']], m) botones :V 
 
  } 
 
@@ -57,17 +57,17 @@ let handler = m => m
  } 
 
  if (/^اه$/i.test(m.text) ) { //sem prefixo 
- conn.reply(m.chat, ` الشارع الي وراه دانا هعملك محضر ابن فاجره دلوقتي😂🖤`, m) //wm, null, [['Menu', '#menu']], m) botones :V 
+ conn.reply(m.chat, ` الشارع الي وراه`, m) //wm, null, [['Menu', '#menu']], m) botones :V 
 
  } 
 
  if (/^تصبح علي خير|تصبحوا علي خير/i.test(m.text) ) { //sem prefixo 
- conn.reply(m.chat, ` وانت من اهل الخير حبيبي✨💜 `, m) //wm, null, [['Menu', '#menu']], m) botones :V 
+ conn.reply(m.chat, ` وانت من اهل الخير `, m) //wm, null, [['Menu', '#menu']], m) botones :V 
 
  }  
 
  if (/^اتفق$/i.test(m.text) ) { //sem prefixo 
- conn.reply(m.chat, `  اطلق من يتفق✨ `, m) //wm, null, [['Menu', '#menu']], m) botones :V 
+ conn.reply(m.chat, `  اطلق من يتفق `, m) //wm, null, [['Menu', '#menu']], m) botones :V 
 
  } 
 
@@ -77,12 +77,12 @@ let handler = m => m
  } 
 
   if (/^باي$/i.test(m.text) ) { //sem prefixo 
- conn.reply(m.chat, ` باي تربيع`, m) //wm, null, [['Menu', '#menu']], m) botones :V 
+ conn.reply(m.chat, ` سلام`, m) //wm, null, [['Menu', '#menu']], m) botones :V 
 
  } 
 
  if (/^عمك$/i.test(m.text) ) { //sem prefixo 
- conn.reply(m.chat, `هل تحتاجني؟`, m) //wm, null, [['Menu', '#menu']], m) botones :V 
+ conn.reply(m.chat, `عارف اني عمك`, m) //wm, null, [['Menu', '#menu']], m) botones :V 
 
  } 
 
