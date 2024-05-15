@@ -1,11 +1,20 @@
-import TicTacToe from '../lib/tictactoe.js'
+import { TicTacToe } from '../lib/tictactoe.js'
 
 let handler = async (m, { conn, usedPrefix, command, text }) => {
     conn.game = conn.game ? conn.game : {}
+    if (text === 'حذففف') {
+        let room = Object.values(conn.game).find(room => room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender))
+        if (room) {
+            delete conn.game[room.id];
+            m.reply('تم حذف اللعبة.')
+        } else {
+            m.reply('ليس لديك أي لعبة قائمة.')
+        }
+        return;
+    }
     if (Object.values(conn.game).find(room => room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender))) throw `❏ انت ماذلت في الجيم, لحذف الجيم اكتب : *${usedPrefix}حذففف*`
     if (!text) throw `✳️ Put a number in the room`
     let room = Object.values(conn.game).find(room => room.state === 'WAITING' && (text ? room.name === text : true))
-    // m.reply('[WIP Feature]')
     if (room) {
         m.reply('*تم ايجاد الشخص الاخر*')
         room.o = m.chat
@@ -54,14 +63,14 @@ ${arr.slice(6).join('')}
         }
         if (text) room.name = text
 
-     conn.reply(m.chat, `❏ *توقع الشريك*\nاكتب الامر التالي للدخول في نفس الجيم
+        conn.reply(m.chat, `❏ *توقع الشريك*\nاكتب الامر التالي للدخول في نفس الجيم
 ❏ *${usedPrefix + command} ${text}*
 
 ❏ *الجائزه: 4999* اكس بي`, m, {
             mentions: conn.parseMention(text)
         })
 
-   conn.game[room.id] = room
+        conn.game[room.id] = room
     }
 
 }
