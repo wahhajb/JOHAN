@@ -8,7 +8,7 @@ import os from 'os';
 const streamPipeline = promisify(pipeline);
 
 var handler = async (m, { conn, command, text, usedPrefix }) => {
-  if (!text) throw `مثال : \n ${usedPrefix}${command} البقره;
+  if (!text) throw `مثال : \n ${usedPrefix}${command} Surat Yusuf `;
 
   let search = await yts(text);
   let vid = search.videos[Math.floor(Math.random() * search.videos.length)];
@@ -68,7 +68,7 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
 
 handler.help = ['play'].map((v) => v + ' <query>');
 handler.tags = ['downloader'];
-handler.command = ['mp3', 'songs', 'ytmp3doc','سوره]
+handler.command = ['mp3', 'songs', 'ytmp3doc','سوره']
 
 handler.exp = 0;
 handler.diamond = false;
