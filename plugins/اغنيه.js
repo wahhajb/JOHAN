@@ -14,9 +14,9 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
   let vid = search.videos[Math.floor(Math.random() * search.videos.length)];
   if (!search) throw 'Video Not Found, Try Another Title';
   let { title, thumbnail, timestamp, views, ago, url } = vid;
-  let wm = ' *𝑺𝐻𝐴𝐷𝛩𝑊 𝐵𝛩𝑇* '; //حط اسم بوتك
+  let wm = 'MIKEY BOT'; //حط اسم بوتك
 
-  let captvid = `  جاري التحميل `;
+  let captvid = `💝 جاري التحميل ♥`;
 
   conn.sendMessage(m.chat, { image: { url: thumbnail }, caption: captvid, footer: author }, { quoted: m });
 
