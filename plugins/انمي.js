@@ -1,41 +1,49 @@
-import translate from '@vitalets/google-translate-api';
-import {Anime} from '@shineiichijo/marika';
-
-
-const client = new Anime();
-const handler = async (m, {conn, text, usedPrefix}) => {
-  const datas = global
-  const idioma = datas.db.data.users[m.sender].language
-  const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`))
-  const tradutor = _translate.plugins.buscador_animeinfo
-
-  if (!text) return m.reply(`*${tradutor.texto1}*`);
-  try {
-    const anime = await client.searchAnime(text);
-    const result = anime.data[0];
-    const resultes = await translate(`${result.background}`, {to: 'es', autoCorrect: true});
-    const resultes2 = await translate(`${result.synopsis}`, {to: 'es', autoCorrect: true});
-    const AnimeInfo = `
-${tradutor.texto2[0]} ${result.title}
-${tradutor.texto2[1]}* ${result.type}
-${tradutor.texto2[2]} ${result.status.toUpperCase().replace(/\_/g, ' ')}
-${tradutor.texto2[3]} ${result.episodes}
-${tradutor.texto2[4]} ${result.duration}*
-${tradutor.texto2[5]} ${result.source.toUpperCase()}
-${tradutor.texto2[6]} ${result.aired.from}
-${tradutor.texto2[7]} ${result.aired.to}
-${tradutor.texto2[8]} ${result.popularity}
-${tradutor.texto2[9]} ${result.favorites}
-${tradutor.texto2[10]} ${result.rating}
-${tradutor.texto2[11]} ${result.rank}
-${tradutor.texto2[12]} ${result.trailer.url}
-${tradutor.texto2[13]} ${result.url}
-${tradutor.texto2[14]} ${resultes.text}
-${tradutor.texto2[15]} ${resultes2.text}`;
-    conn.sendFile(m.chat, result.images.jpg.image_url, 'error.jpg', AnimeInfo, m);
-  } catch {
-    throw `${tradutor.texto3}`;
-  }
-};
-handler.command = /^(انمي|anime)$/i;
-export default handler;
+import fetch from "node-fetch"let handler = async (m, { 
+    command,    usedPrefix, 
+    conn,    text, 
+    args 
+}) => { 
+    let lister = [        "بحث", 
+        "فيديو" 
+    ] 
+    let [feature, inputs, inputs_, inputs__, inputs___] = text.split("|")    if (!lister.includes(feature)) return m.reply("*Example:*\n.animeiat search|naruto\n\n*Pilih type yg ada*\n" + lister.map((v, index) => "  ○ " + v).join('\n')) 
+    if (lister.includes(feature)) { 
+        if (feature == "بحث") { 
+            if (!inputs) return m.reply("Input query anime")            await m.reply(wait) 
+            let outs = await searchAnime(inputs)            let teks = outs.map((anime, index) => { 
+                return `*[ ${index + 1} ]**Judul:* ${anime.anime_name} 
+*id:* ${anime.id}*slug:* ${anime.slug} 
+*Cerita:* ${anime.story}*Nama lain:* ${anime.other_names} 
+*Total episode:* ${anime.total_episodes}*Usia:* ${anime.age} 
+*Tipe:* ${anime.type}*Status:* ${anime.status} 
+*Path poster:* ${anime.poster_path}*Dipublikasikan oleh:* ${anime.published} 
+*Tanggal publikasi:* ${anime.published_at}*Tahun:* ${anime.year_id} 
+*Dibuat pada:* ${anime.created_at}*Diperbarui pada:* ${anime.updated_at} 
+   `.trim()            }).filter(v => v).join("\n\n________________________\n\n") 
+            await m.reply(teks)        } 
+        if (feature == "فيديو") { 
+            if (!inputs) return m.reply("Input query slug")            await m.reply(wait) 
+            let outs = await fetchAnime(inputs, inputs_)            await m.reply(outs) 
+        } 
+    }} 
+handler.help = ["animeiat type query"]handler.tags = ["internet"] 
+handler.command = /^(انميس)$/iexport default handler 
+ 
+async function searchAnime(query) {    try { 
+        const response = await fetch(`https://api.animeiat.co/v1/anime?q=${query}`)        const data = await response.json() 
+        return data.data    } catch (error) { 
+        console.error('Terjadi kesalahan:', error)        return null 
+    }} 
+async function fetchAnime(query, episodes = 1) { 
+  try {    const response = await fetch("https://api.animeiat.co/v1/anime?q=" + query); 
+    const sear = await response.json();    const response1 = await fetch("https://api.animeiat.co/v1/episode/" + sear.data[0].slug + "-episode-" + episodes); 
+    const data = await response1.json();    const slug = data.data.video.slug; 
+    const response2 = await fetch("https://api.animeiat.co/v1/video/" + slug);    const data2 = await response2.json(); 
+    const source = data2.data.sources;     
+    const teks = source.map((anime, index) => {      return `*[ ${index + 1} ]* 
+*Quality:* ${anime.quality}*Label:* ${anime.label} 
+*Link:* ${anime.file}   `.trim(); 
+    }).filter(v => v).join("\n\n________________________\n\n");     
+    return teks;  } catch (error) { 
+    console.error(error);    return null; 
+  }}
