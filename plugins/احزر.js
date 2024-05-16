@@ -1,18 +1,18 @@
 let handler = async(m, {
-	conn,
-	text,
-	command
+ conn,
+ text,
+ command
 }) => {
-	let yh = global.e7zar
-	let url = yh[Math.floor(Math.random() * yh.length)]
-	conn.sendMessage(m.chat, {
-		image: {
-			url: url
-		},
-		caption: "*احزر ما اسم الشخصيه✨*"
-	}, {
-		quoted: m
-	});
+ let yh = global.e7zar
+ let url = yh[Math.floor(Math.random() * yh.length)]
+ conn.sendMessage(m.chat, {
+  image: {
+   url: url
+  },
+  caption: "*احزر ما اسم الشخصيه✨*"
+ }, {
+  quoted: m
+ });
 }
 handler.command = /^(احزر)$/i
 handler.tags = ['anime']
