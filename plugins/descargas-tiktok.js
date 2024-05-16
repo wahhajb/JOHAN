@@ -11,7 +11,7 @@ const { author: { nickname }, video, description } = await tiktokdl(args[0])
 .catch(async _ => await tiktokdlv3(args[0]))
 const url = video.no_watermark2 || video.no_watermark || 'https://tikcdn.net' + video.no_watermark_raw || video.no_watermark_hd
 if (!url) return conn.reply(m.chat, `*اوووف, خطأ أثناء محاولة تنزيل الفيديو ، يرجى المحاولة مرة أخرى*`, fkontak,  m)
-conn.sendFile(m.chat, url, 'tiktok.mp4', `𝐵𝑌:𝑺𝐻𝐴𝐷𝑂𝑊&𝐸𝐿𝐺𝐴𝑍𝐴𝑅`.trim(), m)
+conn.sendFile(m.chat, url, 'tiktok.mp4', `𝐵𝑌:𝑺𝐻𝐴𝐷𝑂𝑊`.trim(), m)
 } catch {
 }}
 handler.help = ['tiktok']
