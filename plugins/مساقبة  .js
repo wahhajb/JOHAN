@@ -53,7 +53,15 @@ let handler = async (m, { conn, command }) => {
             conn.sendFile(m.chat, json.img, '', caption, m);
 
             conn.mikey[id][5] = setTimeout(() => {
-                conn.reply(m.chat, `انتهى الوقت! الإجابة الصحيحة هي: ${json.name}`, conn.mikey[id][0]);
+                let correctIndex = conn.mikey[id][2].findIndex(player => player.id === m.sender);
+                if (correctIndex !== -1) {
+                    conn.mikey[id][2][correctIndex].points += points;
+                    conn.mikey[id][2][correctIndex].correctAnswers++;
+                    conn.reply(m.chat, `انتهى الوقت! الإجابة الصحيحة هي: ${json.name}\n+${points} نقطة`, conn.mikey[id][0]);
+                } else {
+                    conn.reply(m.chat, `انتهى الوقت! الإجابة الصحيحة هي: ${json.name}`, conn.mikey[id][0]);
+                }
+
                 clearTimeout(conn.mikey[id][5]);
                 conn.mikey[id][5] = null;
 
@@ -96,53 +104,11 @@ handler.before = async function (m, { conn }) {
     if (json && json.name && m.text.toLowerCase() === json.name.toLowerCase()) {
         clearTimeout(this.mikey[id][5]); // مسح المهلة
         let playerIndex = players.findIndex(player => player.id === m.sender);
-        players[playerIndex].points += points;
-        players[playerIndex].correctAnswers++;
-        questionCount++;
+        if (playerIndex !== -1) {
+            players[playerIndex].points += points;
+            players[playerIndex].correctAnswers++;
+            questionCount++;
 
-        if (questionCount >= maxQuestions) {
-            let sortedPlayers = players.sort((a, b) => b.points - a.points);
-            let playersList = sortedPlayers.map((player, i) => `${i + 1} - @${player.id.split('@')[0]} [${player.points} نقطة, ${ player.correctAnswers} إجابات صحيحة]`).join('\n');
-            this.reply(m.chat, `المسابقة انتهت! هنا النتائج:\n\n${playersList}`, m, { mentions: conn.parseMention(playersList) });
-            delete this.mikey[id];
-        } else {
-            let mikeyData = await (await fetch(`https://raw.githubusercontent.com/DK3MK/worker-bot/main/eye.json`)).json();
-            json = mikeyData[Math.floor(Math.random() * mikeyData.length)];
-            this.mikey[id][1] = json;
-            this.mikey[id][3] = questionCount;
-            this.mikey[id][4]++;
-            let playersList = players.map((player, i) => `${i + 1} - @${player.id.split('@')[0]} [${player.points} نقطة, ${ player.correctAnswers} إجابات صحيحة]`).join('\n');
-            let caption = `━ ───── • ⟐ • ───── ━
-*• السؤال رقم ${this.mikey[id][4] + 1}*
-*• جاوب بسرعة*
-*• الجائزة:* ⌊ ${points} ⌉ *نقطة* لكل إجابة صحيحة
-━ ───── • ⟐ • ───── ━`.trim();
-            this.sendFile(m.chat, json.img, '', caption, m);
-
-            this.mikey[id][5] = setTimeout(() => {
-                this.reply(m.chat, `انتهى الوقت! الإجابة الصحيحة هي: ${json.name}`, this.mikey[id][0]);
-                clearTimeout(this.mikey[id][5]);
-                this.mikey[id][5] = null;
-
-                setTimeout(async () => {
-                    let newJson = mikeyData[Math.floor(Math.random() * mikeyData.length)];
-                    this.mikey[id][1] = newJson;
-                    this.mikey[id][3]++;
-                    this.mikey[id][4]++;
-
-                    let newCaption = `━ ───── • ⟐ • ───── ━
-*• السؤال رقم ${this.mikey[id][4] + 1}*
-*• جاوب بسرعة*
-*• الجائزة:* ⌊ ${points} ⌉ *نقطة* لكل إجابة صحيحة
-━ ───── • ⟐ • ───── ━`.trim();
-                    this.sendFile(m.chat, newJson.img, '', newCaption, m);
-                }, 1000); // تأخير إرسال سؤال جديد لتصور أفضل
-            }, questionTimeout);
-        }
-    }
-};
-
-handler.command = /^(مسابقه-صور|انضم-صور|حذف-صور)$/i;
-
-// تم تعديل الكود بواسطة MIKEY
-export default handler;
+            if (questionCount >= maxQuestions) {
+                let sortedPlayers = players.sort((a, b) => b.points - a.points);
+                let playersList = sortedPlayers.map((player, i) => `${i + 1} - @${
