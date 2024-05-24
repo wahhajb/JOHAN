@@ -7,24 +7,29 @@ const handler = async (m, { conn, text, args, usedPrefix, command }) => {
 
   m.reply('جارٍ تحويل الصورة إلى أنمي...');
 
-  const data = await q.download?.();
-  const image = await uploadImage(data);
-
   try {
-    const anime = `https://api.lolhuman.xyz/api/imagetoanime?apikey=${lolkeysapi}&img=${image}`;
-    await conn.sendFile(m.chat, anime, 'anime.jpg', null, m);
-  } catch (i) {
+    const data = await q.download?.();
+    const image = await uploadImage(data);
+    if (!image) throw 'حدث خطأ أثناء رفع الصورة.';
+
     try {
-      const anime2 = `https://api.zahwazein.xyz/photoeditor/jadianime?url=${image}&apikey=${keysxxx}`;
-      await conn.sendFile(m.chat, anime2, 'anime.jpg', null, m);
-    } catch (a) {
+      const anime = `https://api.lolhuman.xyz/api/imagetoanime?apikey=${lolkeysapi}&img=${image}`;
+      await conn.sendFile(m.chat, anime, 'anime.jpg', null, m);
+    } catch (i) {
       try {
-        const anime3 = `https://api.caliph.biz.id/api/animeai?img=${image}&apikey=caliphkey`;
-        await conn.sendFile(m.chat, anime3, 'anime.jpg', null, m);
-      } catch (e) {
-        throw 'حدث خطأ أثناء تحويل الصورة. حاول مرة أخرى.';
+        const anime2 = `https://api.zahwazein.xyz/photoeditor/jadianime?url=${image}&apikey=${keysxxx}`;
+        await conn.sendFile(m.chat, anime2, 'anime.jpg', null, m);
+      } catch (a) {
+        try {
+          const anime3 = `https://api.caliph.biz.id/api/animeai?img=${image}&apikey=caliphkey`;
+          await conn.sendFile(m.chat, anime3, 'anime.jpg', null, m);
+        } catch (e) {
+          throw 'حدث خطأ أثناء تحويل الصورة. حاول مرة أخرى.';
+        }
       }
     }
+  } catch (e) {
+    m.reply(e.message ? e.message : e);
   }
 };
 
