@@ -3,9 +3,9 @@ import uploadImage from '../lib/uploadImage.js';
 const handler = async (m, { conn, text, args, usedPrefix, command }) => {
   const q = m.quoted ? m.quoted : m;
   const mime = (q.msg || q).mimetype || q.mediaType || '';
-  if (!/image/g.test(mime)) throw `${lenguajeGB.smsAvisoMG()}${mid.smsconvert}`;
+  if (!/image/g.test(mime)) throw 'الرجاء رفع صورة لتحويلها إلى أنمي.';
 
-  m.reply(`${lenguajeGB.smsAvisoIIG()}${mid.smsconvert1}`);
+  m.reply('جارٍ تحويل الصورة إلى أنمي...');
 
   const data = await q.download?.();
   const image = await uploadImage(data);
@@ -22,14 +22,14 @@ const handler = async (m, { conn, text, args, usedPrefix, command }) => {
         const anime3 = `https://api.caliph.biz.id/api/animeai?img=${image}&apikey=caliphkey`;
         await conn.sendFile(m.chat, anime3, 'anime.jpg', null, m);
       } catch (e) {
-        throw `${lenguajeGB.smsAvisoFG()}${mid.smsconvert2}`;
+        throw 'حدث خطأ أثناء تحويل الصورة. حاول مرة أخرى.';
       }
     }
   }
 };
 
-handler.help = ['toanime'];
+handler.help = ['لانمي'];
 handler.tags = ['tools'];
-handler.command = /^(jadianime|لانمي)$/i;
+handler.command = /^(لانمي|jadianime)$/i;
 
 export default handler;
