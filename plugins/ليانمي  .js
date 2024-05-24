@@ -1,40 +1,42 @@
 import uploadImage from '../lib/uploadImage.js';
 
-const handler = async (m, { conn, text, args, usedPrefix, command }) => {
+const handler = async (m, { conn }) => {
   const q = m.quoted ? m.quoted : m;
   const mime = (q.msg || q).mimetype || q.mediaType || '';
-  if (!/image/g.test(mime)) throw 'الرجاء رفع صورة لتحويلها إلى أنمي.';
+  if (!/image/g.test(mime)) throw 'من فضلك، قم بإرسال صورة لأقوم بتحويلها إلى صورة أنمي.';
 
-  m.reply('جارٍ تحويل الصورة إلى أنمي...');
+  m.reply('جاري تحويل الصورة إلى صورة أنمي...');
 
   try {
     const data = await q.download?.();
     const image = await uploadImage(data);
-    if (!image) throw 'حدث خطأ أثناء رفع الصورة.';
+    if (!image) throw 'حدث خطأ أثناء تحميل الصورة.';
 
-    try {
-      const anime = `https://api.lolhuman.xyz/api/imagetoanime?apikey=${lolkeysapi}&img=${image}`;
-      await conn.sendFile(m.chat, anime, 'anime.jpg', null, m);
-    } catch (i) {
-      try {
-        const anime2 = `https://api.zahwazein.xyz/photoeditor/jadianime?url=${image}&apikey=${keysxxx}`;
-        await conn.sendFile(m.chat, anime2, 'anime.jpg', null, m);
-      } catch (a) {
-        try {
-          const anime3 = `https://api.caliph.biz.id/api/animeai?img=${image}&apikey=caliphkey`;
-          await conn.sendFile(m.chat, anime3, 'anime.jpg', null, m);
-        } catch (e) {
-          throw 'حدث خطأ أثناء تحويل الصورة. حاول مرة أخرى.';
-        }
-      }
-    }
-  } catch (e) {
-    m.reply(e.message ? e.message : e);
+    const animeAPI = `https://api.deepai.org/api/toonify`;
+    const apiKey = 'quickstart-QUdJIGlzIGNvbWluZy4uLi4K';
+
+    const response = await fetch(animeAPI, {
+      method: 'POST',
+      headers: {
+        'Api-Key': apiKey
+      },
+      body: JSON.stringify({
+        image: image
+      })
+    });
+
+    const result = await response.json();
+
+    if (!result || !result.output_url) throw 'حدث خطأ أثناء تحويل الصورة.';
+
+    await conn.sendFile(m.chat, result.output_url, 'anime.jpg', 'تمت عملية التحويل بنجاح!', m);
+  } catch (error) {
+    throw 'حدث خطأ أثناء تحويل الصورة. يرجى المحاولة مرة أخرى.';
   }
 };
 
 handler.help = ['لانمي'];
-handler.tags = ['tools'];
-handler.command = /^(لانمي|jadianime)$/i;
+handler.tags = ['تعليمية'];
+handler.command = /^(لانمي)$/i;
 
 export default handler;
