@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+import axios from 'axios';
 
 const handler = async (m, { conn, text }) => {
   if (!text) {
@@ -7,12 +7,11 @@ const handler = async (m, { conn, text }) => {
 
   try {
     conn.sendPresenceUpdate('composing', m.chat);
-    const BK9api = `https://api.bk9.site/ai/chatgpt?q=${encodeURIComponent(text)}`;
-    const response = await fetch(BK9api);
-    const data = await response.json();
+    const response = await axios.get(`https://api.simsimi.net/v2/?text=${encodeURIComponent(text)}`);
+    const data = response.data;
 
-    if (data.status && data.BK9) {
-      const answer = data.BK9;
+    if (data.success == 1) {
+      const answer = data.message;
       conn.reply(m.chat, answer, m);
     } else {
       throw "حدث خطأ أثناء معالجة الطلب.";
