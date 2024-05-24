@@ -20,7 +20,7 @@ await conn.groupParticipantsUpdate(m.chat, [who], 'remove')
 } 
 return !1
 }
-handler.command = /^(انقلع|انذار|warn|تحذير)$/i
+handler.command = /^(انذار)$/i
 handler.group = true
 handler.owner = true
 handler.owner = true
