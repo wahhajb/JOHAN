@@ -6,7 +6,6 @@ const handler = async (m, { conn, text }) => {
   }
 
   try {
-    conn.sendPresenceUpdate('composing', m.chat);
     const response = await axios.get(`https://api.simsimi.net/v2/?text=${encodeURIComponent(text)}`);
     const data = response.data;
 
