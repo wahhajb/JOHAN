@@ -7,7 +7,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   let fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
 	text = text.endsWith('SMH') ? text.replace('SMH', '') : text 
 	if (!text) throw '*[❗مساعده❗]*\n*•┃❖ابحث على اي صوره ا. شخصيه ترديها*\n*•┃❖مثال افتار لوفي افتار سونغ*'
-	await conn.reply(m.chat, '*انتضر جار تحميل الافتار*', fkontak, { contextInfo:{ forwardingScore: 2022, isForwarded: true, externalAdReply: {title: '𝐿𝑈𝐹𝐹𝑌-𝐵𝛩𝑇', body: `【𝟐𝟎𝟎𝟓/𝟐/𝟏𝟎】١⁵`, sourceUrl: nn,thumbnail: '' }}})
+	await conn.reply(m.chat, '*انتضر جار تحميل الافتار*', fkontak, { contextInfo:{ forwardingScore: 2022, isForwarded: true, externalAdReply: {title: '𝑍𝑂𝑅𝑂-𝐵𝛩𝑇', body: `【𝟐𝟎𝟎𝟓/𝟐/𝟏𝟎】١⁵`, sourceUrl: nn,thumbnail: '' }}})
 	let res = await pinterest(text)
 	// if (!res) throw res
 	let mime = await lookup(res)
